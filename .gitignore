@@ -48,4 +48,4 @@ package-lock.json
 
 #etc
 
-dist
+dist/bundle.js
