@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Header } from '../containers/header';
-import { searchForm } from './searchForm';
-import { Movie } from '../containers/movie';
 
 const API_KEY = 'http://www.omdbapi.com/?i=tt3896198&apikey=6e53e074';
 
@@ -23,6 +20,8 @@ export const App = () => {
     setLoading(true);
     setErrorMessage(null);
   };
+
+  return (<h2>FilmBuff</h2>)
 
   
 
