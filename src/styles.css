@@ -1,1 +1,56 @@
 /* main css file for now */
+
+/* todo: figure out colours for application, not important */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  text-align: center;
+}
+
+.application-header {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  padding: 20px;
+  background-color: #e1e1e1;
+}
+
+
+.single-movie-element {
+  padding: 5px 25px 10px 25px;
+  max-width: 25%;
+}
+
+.movieResults {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* media queries */
+@media screen and (min-width: 694px) and (max-width: 915px) {
+  .single-movie-element {
+    max-width: 33%;
+  }
+}
+
+@media screen and (min-width: 652px) and (max-width: 693px) {
+  .single-movie-element {
+    max-width: 50%;
+  }
+}
+
+
+@media screen and (max-width: 651px) {
+  .single-movie-element {
+    max-width: 100%;
+    margin: auto;
+  }
+}

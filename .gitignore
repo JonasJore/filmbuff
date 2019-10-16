@@ -49,3 +49,4 @@ package-lock.json
 #etc
 
 dist/bundle.js
+src/config/config.js
