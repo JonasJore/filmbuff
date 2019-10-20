@@ -5,7 +5,7 @@ import { Header } from '../containers/header';
 import { SearchForm } from '../components/searchForm';
 import API_KEY from '../config/config';
 
-const API_URL = `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}`;
+const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
 
 const movieTest = {
   "Title": "The Lord of the Rings: The Fellowship of the Ring",
@@ -33,7 +33,7 @@ export const App = () => {
     setLoading(true);
     setError(null);
 
-    fetch(`http://www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}`)
+    fetch(`http://www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}&type=movie`)
       .then(res => res.json())
       .then(json => {
         if(json.Response === "True") {

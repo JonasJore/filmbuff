@@ -6,12 +6,14 @@ export const Movie = ({ movie }) => {
   return (
     <div className="single-movie-element">
       <h2 className="movie-title">{movie.Title}</h2>
-      <img 
-        className="movieArt"
-        src={movieArt}
-        width="200"
-        alt={movie.title}
-      />
+      <a href={`https://www.imdb.com/title/${movie.imdbID}`}>
+        <img 
+          className="movieArt"
+          src={movieArt}
+          width="200"
+          alt={movie.title}
+        />
+      </a>
     </div>
   );
 };
