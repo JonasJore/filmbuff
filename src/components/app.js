@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useReducer, useEffect } from "react";
 
 import { Movie } from '../containers/movie';
 import { Header } from '../containers/header';
@@ -7,44 +7,86 @@ import API_KEY from '../config/config';
 
 const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
 
-const movieTest = {
-  "Title": "The Lord of the Rings: The Fellowship of the Ring",
-  "Year": "2001",
-  "imdbID": "tt0120737",
-  "Type": "movie",
-  "Poster": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
-};
+const initialState = {
+  loading: true,
+  movies: [],
+  error: null,
+}
+
+const SEARCH_MOVIES = "SEARCH_MOVIES";
+const SEARCH_MOVIES_SUCCESS = "SEARCH_MOVIES_SUCCESS";
+const SEARCH_MOVIES_FAILED = "SEARCH_MOVIES_FAILED";
+
+// todo: trekkes ut senere.
+export const movieReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case SEARCH_MOVIES:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      }
+    case SEARCH_MOVIES_SUCCESS:
+      console.log(action.payload, "sfodibns")
+      return {
+        ...state,
+        loading: false,
+        movies: action.payload,
+      }
+    case SEARCH_MOVIES_FAILED:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      }
+    default:
+      return state;
+  }
+
+}
+
+const prepareSearch = search => search.split(' ').join('-')
 
 export const App = () => {
-  const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = useReducer(movieReducer, initialState);
 
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
-      .then(json => {
-        setMovies([...json.Search]);
-        setLoading(false);
+      .then(jsonResponse => {
+        dispatch({
+          type: SEARCH_MOVIES_SUCCESS,
+          payload: [...jsonResponse.Search],
+        });
       });
   }, []);
 
-  const searchForMovies = searchValue => {
-    setLoading(true);
-    setError(null);
 
-    fetch(`http://www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}&type=movie`)
+  const searchForMovies = searchValue => {
+    const preparedSearch = prepareSearch(searchValue);
+
+    dispatch({
+      type: SEARCH_MOVIES,
+    });
+
+    fetch(`http://www.omdbapi.com/?s=${preparedSearch}&apikey=${API_KEY}&type=movie`)
       .then(res => res.json())
       .then(json => {
         if(json.Response === "True") {
-          setMovies([...json.Search]);
-          setLoading(false);
+          dispatch({
+            type: SEARCH_MOVIES_SUCCESS,
+            payload: json.Search,
+          })
         } else {
-          setError(json.Error);
-          setLoading(false);
+          dispatch({
+            type: SEARCH_MOVIES_FAILED,
+            error: json.Error,
+          });
         }
       });
   };
+
+  const { movies, error, loading } = state;
 
   return (
     <div className="app">
@@ -54,15 +96,13 @@ export const App = () => {
         {loading && !error ? (
           <span>loading...</span>
         ) : error ? (
-          <div>error!</div>
+          <div>{error}</div>
         ) :
           movies.map((movie, index) => (
-            <Movie key={`${index}`} movie={movie} />
+            <Movie key={`${index}--${movie.Title}`} movie={movie} />
           ))            
         }
       </div>
     </div>
   );
 };
-
-export default App;

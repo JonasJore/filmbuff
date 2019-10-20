@@ -26,8 +26,12 @@ export const SearchForm = (props) => {
           onChange={handleChange}
           type='text'
         />
+        <input className="searchButton" 
+          onClick={search} 
+          type="submit" 
+          value="Search" 
+        />
       </form>
-      <input className="searchButton" onClick={search} type="submit" value="Search" />
     </div>
   );
 }
