@@ -9,6 +9,7 @@
 
 .app {
   text-align: center;
+  padding: 40px;
 }
 
 .application-header {
@@ -22,16 +23,38 @@
   background-color: #e1e1e1;
 }
 
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+
+}
+
+.searchFormInput {
+  width: 250px;
+  padding: 10px;
+  border-radius: inherit;
+}
+
 
 .single-movie-element {
-  padding: 5px 25px 10px 25px;
   max-width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px 25px 10px 25px;
 }
 
 .movieResults {
+  max-width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* media queries */

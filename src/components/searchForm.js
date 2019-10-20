@@ -20,7 +20,8 @@ export const SearchForm = (props) => {
   return (
     <div>
       <form className="searchForm">
-        <input 
+        <input
+          className="searchFormInput"
           value={searchValue}
           onChange={handleChange}
           type='text'
