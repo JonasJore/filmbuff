@@ -1,22 +1,30 @@
+//@ts-ignore
 import React, { useReducer, useEffect } from "react";
 
 import { Movie } from '../containers/movie';
 import { Header } from '../containers/header';
-import { SearchForm } from '../components/searchForm';
+import { SearchForm } from './searchForm';
 import { movieReducer, SEARCH_MOVIES, SEARCH_MOVIES_FAILED, SEARCH_MOVIES_SUCCESS } from '../reducer/movieReducer';
 import API_KEY from '../config/config';
 
-const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
+interface AppState {
+  loading: boolean,
+  movies: string[],
+  error: string;
+}
 
-const initialState = {
+const initialState: AppState = {
   loading: true,
   movies: [],
   error: null,
 }
 
-const prepareSearch = search => search.split(' ').join('-')
+const API_URL: string = `http://www.omdbapi.com/?apikey=${API_KEY}`;
 
-export const App = () => {
+const prepareSearch = (search: string): string => 
+  search.split(' ').join('-')
+
+export const App = (): JSX.Element => {
   const [state, dispatch] = useReducer(movieReducer, initialState);
 
   useEffect(() => {
@@ -31,7 +39,7 @@ export const App = () => {
   }, []);
 
 
-  const searchForMovies = searchValue => {
+  const searchForMovies = (searchValue: string): void => {
     const preparedSearch = prepareSearch(searchValue);
 
     dispatch({
@@ -55,19 +63,23 @@ export const App = () => {
       });
   };
 
-  const { movies, error, loading } = state;
+  const { 
+    movies, 
+    error, 
+    loading 
+  } = state;
 
   return (
     <div className="app">
       <Header headerText="FilmBuff" />
-      <SearchForm searchValue={searchForMovies}/>
+      <SearchForm searchTitle={searchForMovies}/>
       <div className="movieResults">
         {loading && !error ? (
           <span>loading...</span>
         ) : error ? (
           <div>{error}</div>
         ) :
-          movies.map((movie, index) => (
+          movies.map((movie: { Title: any; }, index: any) => (
             <Movie key={`${index}--${movie.Title}`} movie={movie} />
           ))            
         }

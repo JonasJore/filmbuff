@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 
-export const SearchForm = (props) => {
+interface SearchFormPropTypes {
+  searchTitle: (searchValue: string) => void;
+}
+
+export const SearchForm = ({ searchTitle }: SearchFormPropTypes): JSX.Element => {
   const [searchValue, setSearchValue] = useState('');
 
   const resetSearch = () => {
     setSearchValue('');
   }
 
-  const handleChange = (even) => {
+  const handleChange = (event: any): void => {
     setSearchValue(event.target.value);
   }
 
-  const search = (event) => {
+  const search = (event: any): void => {
     event.preventDefault();
-    props.searchValue(searchValue);
+    searchTitle(searchValue);
     resetSearch();
   }
 
   return (
     <div>
-      <form className="searchForm">
+      <form className="searchForm" onSubmit={() => search}>
         <input
           className="searchFormInput"
           value={searchValue}
@@ -27,7 +31,7 @@ export const SearchForm = (props) => {
           type='text'
         />
         <input className="searchButton" 
-          onClick={search} 
+          onClick={() => searchTitle} 
           type="submit" 
           value="Search" 
         />

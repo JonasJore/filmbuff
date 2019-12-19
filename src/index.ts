@@ -4,6 +4,6 @@ import { App } from "./components/app";
 import "./styles.css";
 
 render(
-  <App />,
-  document.getElementById("app")
+  React.createElement(App),
+  document.getElementById('app')
 );

@@ -2,7 +2,7 @@ export const SEARCH_MOVIES = "SEARCH_MOVIES";
 export const SEARCH_MOVIES_SUCCESS = "SEARCH_MOVIES_SUCCESS";
 export const SEARCH_MOVIES_FAILED = "SEARCH_MOVIES_FAILED";
 
-export const movieReducer = (state = initialState, action) => {
+export const movieReducer = (state: any, action: any) => {
   switch (action.type) {
     case SEARCH_MOVIES:
       return {
