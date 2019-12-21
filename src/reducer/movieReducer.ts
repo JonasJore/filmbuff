@@ -2,11 +2,11 @@ export const SEARCH_MOVIES = "SEARCH_MOVIES";
 export const SEARCH_MOVIES_SUCCESS = "SEARCH_MOVIES_SUCCESS";
 export const SEARCH_MOVIES_FAILED = "SEARCH_MOVIES_FAILED";
 
-// interface MovieState {
-//   loading: boolean;
-//   error: any;
-//   movies: string[];
-// }
+interface MovieState {
+  loading: boolean;
+  error: any;
+  movies: string[];
+}
 
 export const movieReducer = (state: any, action: any) => {
   console.log(action, "dispatched action");
