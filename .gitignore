@@ -28,25 +28,16 @@ typings/
 
 # Optional npm cache directory
 .npm
-
-package-lock.json
-
 # Optional eslint cache
 .eslintcache
-
 # Optional REPL history
 .node_repl_history
-
 # Output of 'npm pack'
 *.tgz
-
 # Yarn Integrity file
 .yarn-integrity
-
 # dotenv environment variables file
 .env
-
 #etc
-
 dist/bundle.js
 src/config/config.js
