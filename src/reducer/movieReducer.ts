@@ -2,7 +2,14 @@ export const SEARCH_MOVIES = "SEARCH_MOVIES";
 export const SEARCH_MOVIES_SUCCESS = "SEARCH_MOVIES_SUCCESS";
 export const SEARCH_MOVIES_FAILED = "SEARCH_MOVIES_FAILED";
 
-export const movieReducer = (state = initialState, action) => {
+interface MovieState {
+  loading: boolean;
+  error: any;
+  movies: string[];
+}
+
+export const movieReducer = (state: any, action: any) => {
+  console.log(action, "dispatched action");
   switch (action.type) {
     case SEARCH_MOVIES:
       return {
@@ -11,6 +18,7 @@ export const movieReducer = (state = initialState, action) => {
         error: null,
       }
     case SEARCH_MOVIES_SUCCESS:
+      console.log("what");
       return {
         ...state,
         loading: false,

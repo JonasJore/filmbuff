@@ -1,7 +1,8 @@
 const path = require('path');
 
 const config = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
+  devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -16,6 +17,11 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        use: 'ts-loader',
         exclude: /node_modules/
       },
       {
@@ -41,7 +47,9 @@ const config = {
   resolve: {
     extensions: [
       '.js',
-      '.jsx'
+      '.jsx',
+      '.ts',
+      '.tsx',
     ]
   }
 };
