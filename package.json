@@ -10,7 +10,8 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "dev": "webpack-dev-server --mode development --hot"
+    "dev": "webpack-dev-server --mode development --hot",
+    "lint": "eslint . --ext .ts --ext .tsx"
   },
   "dependencies": {
     "@types/react": "^16.9.16",
@@ -25,6 +26,7 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.17.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.2.1",

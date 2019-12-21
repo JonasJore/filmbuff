@@ -1,19 +1,19 @@
 import React from 'react';
 
 interface MovieType {
-  Poster: string;
-  Year: string;
-  imdbID: string;
-  Title: string;
+  Poster?: string;
+  Year?: string;
+  imdbID?: string;
+  Title?: string;
 }
 
-interface MoviePropTypes {
+interface Movie {
   movie: MovieType;
 }
 
 const movieDefaultPoster = 'https://m.media-amazon.com/images/M/MV5BYjEzN2FlYmYtNDkwMC00NGFkLWE5ODctYmE5NmYxNzE2MmRiXkEyXkFqcGdeQXVyMjMwODc5Mw@@._V1_SX300.jpg';
 
-export const Movie = ({ movie }: MoviePropTypes) => {
+export const Movie = ({ movie }: Movie) => {
   const movieArt = movie.Poster !== "N/A" ? movie.Poster : movieDefaultPoster;
   return (
     <div className="single-movie-element">

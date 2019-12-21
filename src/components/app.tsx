@@ -21,7 +21,7 @@ const initialState: AppState = {
 
 const API_URL: string = `http://www.omdbapi.com/?apikey=${API_KEY}`;
 
-const prepareSearch = (search: string): string => 
+const prepareSearch = (search: string): string =>
   search.split(' ').join('-')
 
 export const App = (): JSX.Element => {
@@ -79,7 +79,7 @@ export const App = (): JSX.Element => {
         ) : error ? (
           <div>{error}</div>
         ) :
-          movies.map((movie: { Title: any; }, index: any) => (
+          movies.map((movie: { Title: string }, index: any) => (
             <Movie key={`${index}--${movie.Title}`} movie={movie} />
           ))            
         }

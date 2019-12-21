@@ -23,7 +23,7 @@ export const SearchForm = ({ searchTitle }: SearchFormPropTypes): JSX.Element =>
 
   return (
     <div>
-      <form className="searchForm" onSubmit={() => search}>
+      <form className="searchForm" onSubmit={search}>
         <input
           className="searchFormInput"
           value={searchValue}
