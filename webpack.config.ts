@@ -1,6 +1,9 @@
+import { Configuration } from "webpack";
+
 const path = require('path');
 
-const config = {
+
+const config: Configuration = {
   entry: './src/index.ts',
   devtool: 'inline-source-map',
   output: {
