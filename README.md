@@ -9,7 +9,7 @@ for this project to run properly you will need an [API-key](http://www.omdbapi.c
 create a config file at `./src/config`
 
 ```sh
-touch ./src/config/config.js
+touch ./src/config/config.ts
 ```
 
 setup the config file something like this.
