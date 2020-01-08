@@ -1,7 +1,5 @@
-import { Configuration } from "webpack";
-
-const path = require('path');
-
+import { Configuration } from 'webpack';
+import path from 'path';
 
 const config: Configuration = {
   entry: './src/index.ts',
