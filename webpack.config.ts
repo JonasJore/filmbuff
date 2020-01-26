@@ -1,5 +1,6 @@
 import { Configuration } from 'webpack';
-import path from 'path';
+
+const path = require('path');
 
 const config: Configuration = {
   entry: './src/index.ts',
@@ -9,23 +10,16 @@ const config: Configuration = {
     filename: 'bundle.js'
   },
   devServer: {
-    port: 6969,
+    port: 8080,
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
   },
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
+    rules: [{
         test: /\.(ts|tsx)$/,
         use: 'ts-loader',
         exclude: /node_modules/
-      },
-      {
+      },{
         test: /\.css$/,
         use: [
           'style-loader',
