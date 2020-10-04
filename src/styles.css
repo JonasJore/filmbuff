@@ -1,16 +1,13 @@
-/* main css file for now */
-
-/* todo: figure out colours for application, not important */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 * {
   padding: 0;
   margin: 0;
 }
 
-
 .app {
   text-align: center;
-  padding: 40px;
+  padding: 0 40px 0 40px;
 }
 
 .application-header {
@@ -50,18 +47,78 @@
 
 
 .single-movie-element {
-  max-width: 25%;
+  width: 800px;
+  height: 400px;
+  background: transparent;
   display: flex;
-  flex-wrap: wrap;
+  border-radius:10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
   justify-content: center;
-  padding: 5px 25px 10px 25px;
+  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+  /*position: absolute; delete l*/
+  margin: 2vh auto;
+}
+
+.left-side {
+  width: 40%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px 0 0 10px;
+  float: left;
+}
+
+h1 {
+  color:#fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  text-align: left;
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+.movie-production-year {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  text-align: left;
+  font-size: 20px;
+}
+
+.imdb-link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  text-align: left;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  margin-top: auto;
+}
+
+.right-side {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 40px 20px 40px;
+  width: 60%;
+  background: #000000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  border-radius:0 10px 10px 0;
+  -webkit-border-radius:0 10px 10px 0;
+  -moz-border-radius:0 10px 10px 0;
+}
+
+.movieArt {
+  width:100%;
+  height:auto;
+  border-radius: 10px 0 0 10px;
+  position: relative;
 }
 
 .movieResults {
-  max-width: 100%;
+  max-width: 800px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
 }
 

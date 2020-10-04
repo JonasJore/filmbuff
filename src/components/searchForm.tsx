@@ -11,11 +11,11 @@ export const SearchForm = ({ searchTitle }: SearchFormPropTypes): JSX.Element =>
     setSearchValue('');
   }
 
-  const handleChange = (event: any): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchValue(event.target.value);
   }
 
-  const search = (event: any): void => {
+  const search = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     searchTitle(searchValue);
     resetSearch();

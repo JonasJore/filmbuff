@@ -1,15 +1,17 @@
-//@ts-ignore
 import React, { useReducer, useEffect } from "react";
 
-import { Movie } from '../containers/movie';
+import { MovieCard } from '../containers/movieCard';
 import { Header } from '../containers/header';
 import { SearchForm } from './searchForm';
-import { movieReducer, SEARCH_MOVIES, SEARCH_MOVIES_FAILED, SEARCH_MOVIES_SUCCESS } from '../reducer/movieReducer';
-import API_KEY from '../config/config';
+import { 
+  movieReducer, 
+  MovieReducerActions, 
+  MovieType 
+} from '../reducer/movieReducer';
 
 interface AppState {
   loading: boolean,
-  movies: string[],
+  movies: any[],
   error: string;
 }
 
@@ -19,7 +21,13 @@ const initialState: AppState = {
   error: null,
 }
 
-const API_URL: string = `http://www.omdbapi.com/?apikey=${API_KEY}`;
+const API_URL: string = `http://www.omdbapi.com/?apikey=${process.env.API_KEY}`;
+
+const {
+  SEARCH_MOVIES,
+  SEARCH_MOVIES_FAILED,
+  SEARCH_MOVIES_SUCCESS
+} = MovieReducerActions;
 
 const prepareSearch = (search: string): string =>
   search.split(' ').join('-')
@@ -38,7 +46,6 @@ export const App = (): JSX.Element => {
       });
   }, []);
 
-
   const searchForMovies = (searchValue: string): void => {
     const preparedSearch = prepareSearch(searchValue);
 
@@ -46,14 +53,14 @@ export const App = (): JSX.Element => {
       type: SEARCH_MOVIES,
     });
 
-    fetch(`http://www.omdbapi.com/?s=${preparedSearch}&apikey=${API_KEY}&type=movie`)
+    fetch(`http://www.omdbapi.com/?s=${preparedSearch}&apikey=${process.env.API_KEY}&type=movie`)
       .then(res => res.json())
       .then(json => {
         if(json.Response === "True") {
           dispatch({
             type: SEARCH_MOVIES_SUCCESS,
             payload: json.Search,
-          })
+          });
         } else {
           dispatch({
             type: SEARCH_MOVIES_FAILED,
@@ -63,7 +70,7 @@ export const App = (): JSX.Element => {
       });
   };
 
-  const { 
+  const {
     movies, 
     error, 
     loading 
@@ -79,9 +86,12 @@ export const App = (): JSX.Element => {
         ) : error ? (
           <div>{error}</div>
         ) :
-          movies.map((movie: { Title: string }, index: any) => (
-            <Movie key={`${index}--${movie.Title}`} movie={movie} />
-          ))            
+          movies.map((movie: MovieType, index: number) => (
+            <MovieCard 
+              key={`${index}--${movie.Title}`} 
+              movie={movie} 
+            />
+          ))
         }
       </div>
     </div>

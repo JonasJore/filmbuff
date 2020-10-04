@@ -1,19 +1,21 @@
-import { Configuration } from 'webpack';
-
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
-const config: Configuration = {
-  entry: './src/index.ts',
+const config = {
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   devServer: {
     port: 8080,
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    historyApiFallback: true
   },
+  plugins: [ new Dotenv() ],
   module: {
     rules: [{
         test: /\.(ts|tsx)$/,
@@ -37,7 +39,7 @@ const config: Configuration = {
           }
         ]
       }
-    ]
+    ],
   },
   resolve: {
     extensions: [
