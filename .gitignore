@@ -33,3 +33,5 @@ typings/
 #etc
 dist/bundle.js
 src/config/config.js
+
+.vscode
