@@ -1,25 +1,19 @@
 # filmbuff
 
-frontend project for fans of movies 📽🍿
+Frontend project for fans of movies 📽🍿
 
 ## Config:
 
-for this project to run properly you will need an [API-key](http://www.omdbapi.com/apikey.aspx)
+For this project to run properly you will need an api-key, which you can register for here: [link](http://www.omdbapi.com/apikey.aspx)
 
-create a config file at `./src/config`
+Create a .env file
 
 ```sh
-touch ./src/config/config.ts
+touch .env
 ```
 
-setup the config file something like this.
+The env file will hold a valid apikey under the key: API_KEY
 
-```js
-const config = {
-  API_KEY : {api-key},
-};
-
-export default config.API_KEY;
 ```
 
 ## Building and running on localhost
