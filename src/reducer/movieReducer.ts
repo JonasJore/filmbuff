@@ -1,30 +1,4 @@
-interface MovieState {
-  loading: boolean;
-  error: any;
-  movies: MovieType[];
-};
-
-export enum MovieReducerActions {
-  SEARCH_MOVIES = "SEARCH_MOVIES",
-  SEARCH_MOVIES_SUCCESS = "SEARCH_MOVIES_SUCCESS",
-  SEARCH_MOVIES_FAILED = "SEARCH_MOVIES_FAILED"
-}
-
-export type MovieType = {
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-  imdbID: string;
-  Plot: string;
-  Runtime: string;
-}
-
-type MovieAction = {
-  type?: MovieReducerActions;
-  payload?: MovieType[];
-  error?: string;
-}
+import { MovieAction, MovieReducerActions, MovieState } from "./types";
 
 const {
   SEARCH_MOVIES,
@@ -33,8 +7,6 @@ const {
 } = MovieReducerActions;
 
 export const movieReducer = (state: MovieState, action: MovieAction) => {
-  console.log(action, "dispatched action");
-  console.log(action.payload, " huhbb");
   switch (action.type) {
     case SEARCH_MOVIES:
       return {
@@ -43,7 +15,6 @@ export const movieReducer = (state: MovieState, action: MovieAction) => {
         error: null,
       }
     case SEARCH_MOVIES_SUCCESS:
-      
       return {
         ...state,
         loading: false,
@@ -58,5 +29,4 @@ export const movieReducer = (state: MovieState, action: MovieAction) => {
     default:
       return state;
   }
-
 }

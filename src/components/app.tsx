@@ -5,9 +5,8 @@ import { Header } from '../containers/header';
 import { SearchForm } from './searchForm';
 import { 
   movieReducer, 
-  MovieReducerActions, 
-  MovieType 
 } from '../reducer/movieReducer';
+import { MovieReducerActions, MovieType } from "../reducer/types";
 
 interface AppState {
   loading: boolean,

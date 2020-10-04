@@ -25,11 +25,7 @@ export const MovieCard = ({ movie }: MoviePropTypes) => {
         <a href={`https://www.imdb.com/title/${movie.imdbID}`} className="imdb-link">
           IMDB
         </a>
-        <p>
-          
-        </p>
       </div>
-
     </div>
   );
 };

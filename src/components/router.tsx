@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { App } from './app';
-import { Sandbox } from './sanbox';
+import { Sandbox } from './sandbox';
 import { Error } from './error';
 
 export const Router = () => {
@@ -13,6 +13,5 @@ export const Router = () => {
         <Route component={Error} />
       </Switch>
     </main>
-    
   );
 };
