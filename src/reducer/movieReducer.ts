@@ -1,15 +1,12 @@
-export const SEARCH_MOVIES = "SEARCH_MOVIES";
-export const SEARCH_MOVIES_SUCCESS = "SEARCH_MOVIES_SUCCESS";
-export const SEARCH_MOVIES_FAILED = "SEARCH_MOVIES_FAILED";
+import { MovieAction, MovieReducerActions, MovieState } from "./types";
 
-interface MovieState {
-  loading: boolean;
-  error: any;
-  movies: string[];
-}
+const {
+  SEARCH_MOVIES,
+  SEARCH_MOVIES_FAILED,
+  SEARCH_MOVIES_SUCCESS
+} = MovieReducerActions;
 
-export const movieReducer = (state: any, action: any) => {
-  console.log(action, "dispatched action");
+export const movieReducer = (state: MovieState, action: MovieAction) => {
   switch (action.type) {
     case SEARCH_MOVIES:
       return {
@@ -18,7 +15,6 @@ export const movieReducer = (state: any, action: any) => {
         error: null,
       }
     case SEARCH_MOVIES_SUCCESS:
-      console.log("what");
       return {
         ...state,
         loading: false,
@@ -33,5 +29,4 @@ export const movieReducer = (state: any, action: any) => {
     default:
       return state;
   }
-
 }
