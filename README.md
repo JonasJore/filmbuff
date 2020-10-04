@@ -14,8 +14,6 @@ touch .env
 
 The env file will hold a valid apikey under the key: API_KEY
 
-```
-
 ## Building and running on localhost
 
 First install dependencies:
