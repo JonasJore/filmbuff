@@ -77,8 +77,10 @@ export const App = (): JSX.Element => {
 
   return (
     <div className="app">
-      <Header headerText="FilmBuff" />
-      <SearchForm searchTitle={searchForMovies}/>
+      <Header headerText="FilmBuff">
+        <SearchForm searchTitle={searchForMovies}/>
+      </Header>
+      
       <div className="movieResults">
         {loading && !error ? (
           <span>loading...</span>
